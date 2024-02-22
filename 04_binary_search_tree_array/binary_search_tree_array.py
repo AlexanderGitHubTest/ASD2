@@ -5,20 +5,14 @@ Binary search tree (2).
 class aBST:
 
     def __init__(self, depth):
-        if depth <= 0:    
-            tree_size = 0
-            self._depth = 0
-        if depth > 0:    
-            tree_size = 2 ** depth - 1
-            self._depth = depth
+        tree_size = 2 ** (depth + 1) - 1
+        self._depth = depth
         self.Tree = [None] * tree_size # массив ключей
 	
     def FindKeyIndex(self, key):
         # ищем в массиве индекс ключа
-        if self._depth == 0:
-            return None
         current_id = 0
-        current_depth = 1
+        current_depth = 0
         return self.FindKeyIndex_recursion(key, current_id, current_depth)
 
     def FindKeyIndex_recursion(self, key, current_id, current_depth):
@@ -29,9 +23,9 @@ class aBST:
         if current_depth == self._depth:
             return None
         if key < self.Tree[current_id]:
-            return self.FindKeyIndex_recursion(key, 2*current_id + 1, current_depth + 1)
+            return self.FindKeyIndex_recursion(key, 2 * current_id + 1, current_depth + 1)
         if key > self.Tree[current_id]:
-            return self.FindKeyIndex_recursion(key, 2*current_id + 2, current_depth + 1)
+            return self.FindKeyIndex_recursion(key, 2 * current_id + 2, current_depth + 1)
 	
     def AddKey(self, key):
         # добавляем ключ в массив
