@@ -108,7 +108,7 @@ class SimpleTree:
         is_even_subtree_nodes_count = subtree_nodes_count % 2 == 0
         is_current_node_root = current_node.Parent == None
         if is_even_subtree_nodes_count and not is_current_node_root:
-            result_list.append(current_node.Parent.NodeValue)
-            result_list.append(current_node.NodeValue)
+            result_list.append(current_node.Parent)
+            result_list.append(current_node)
         return subtree_nodes_count
 
